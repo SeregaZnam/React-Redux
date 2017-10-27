@@ -6,23 +6,9 @@ import { HashRouter, Route} from 'react-router-dom';
 import './index.css';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
+import reducer from './reducers';
 
-const initiaState = [
-	'Smells like spirit',
-	'Enter Sandman'
-];
-
-function playlist(state = initiaState, action) {
-	if(action.type == 'ADD_TRACK') {
-		return [
-			...state,
-			action.payload
-		]
-	}
-	return state;
-}
-
-const store = createStore(playlist);
+const store = createStore(reducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 ReactDOM.render(
 	<Provider store={store}>
